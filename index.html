@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Undangan Pernikahan Joni & Verny</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/latest/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --romantic-pink: #f8bbd0;
+        --romantic-blue: #bbdefb;
+        --dark-pink: #e91e63;
+        --dark-blue: #1976d2;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+
+      h1,
+      h2,
+      .mempelai-name {
+        font-family: "Great Vibes", cursive;
+      }
+
+      /* Parallax Sections */
+      .parallax {
+        height: 100vh;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .section-pink {
+        background-image:
+          linear-gradient(rgba(248, 187, 208, 0.7), rgba(248, 187, 208, 0.7)),
+          url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1920");
+      }
+
+      .section-blue {
+        background-image:
+          linear-gradient(rgba(187, 222, 251, 0.7), rgba(187, 222, 251, 0.7)),
+          url("https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1920");
+      }
+
+      /* Floating Menu */
+      .floating-nav {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 10px 25px;
+        border-radius: 50px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        display: flex;
+        gap: 20px;
+      }
+
+      .floating-nav a {
+        color: var(--dark-pink);
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: 0.3s;
+      }
+
+      .floating-nav a:hover {
+        color: var(--dark-blue);
+      }
+
+      /* Hero Slideshow Overlay */
+      #heroCarousel .carousel-item {
+        height: 100vh;
+      }
+
+      .overlay-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        width: 100%;
+        z-index: 10;
+      }
+
+      .mempelai-name {
+        font-size: 5rem;
+        margin-bottom: 20px;
+      }
+
+      /* Countdown */
+      #countdown {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .countdown-item {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(5px);
+        padding: 10px;
+        border-radius: 10px;
+        min-width: 80px;
+      }
+
+      /* Live Chat Styling */
+      #chat-box {
+        height: 300px;
+        overflow-y: auto;
+        background: #fff;
+        border-radius: 15px;
+        padding: 15px;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .chat-bubble {
+        background: var(--romantic-blue);
+        padding: 8px 15px;
+        border-radius: 15px;
+        margin-bottom: 10px;
+        max-width: 85%;
+        animation: fadeIn 0.5s;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* QR Button */
+      .btn-qr {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        background: var(--dark-pink);
+        color: white;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Maps Link Styling */
+      .map-card {
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+      .map-card:hover {
+        transform: scale(1.02);
+      }
+
+      .copy-btn {
+        cursor: pointer;
+        color: var(--dark-blue);
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Tombol QR -->
+    <button class="btn-qr" data-bs-toggle="modal" data-bs-target="#qrModal">
+      <i class="fas fa-qrcode"></i>
+    </button>
+
+    <!-- Floating Navigation -->
+    <nav class="floating-nav">
+      <a href="#home" title="Home"><i class="fas fa-home"></i></a>
+      <a href="#mempelai" title="Mempelai"><i class="fas fa-heart"></i></a>
+      <a href="#acara" title="Acara"><i class="fas fa-calendar-alt"></i></a>
+      <a href="#galeri" title="Hadiah"><i class="fas fa-gift"></i></a>
+      <a href="#ucapan" title="Ucapan"><i class="fas fa-comment"></i></a>
+    </nav>
+
+    <!-- Section 1: Home (Slideshow & Countdown) -->
+    <section id="home" class="p-0">
+      <div
+        id="heroCarousel"
+        class="carousel slide carousel-fade"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div
+            class="carousel-item active"
+            style="
+              background: url(&quot;https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=1920&quot;)
+                center/cover;
+            "
+          ></div>
+          <div
+            class="carousel-item"
+            style="
+              background: url(&quot;https://images.unsplash.com/photo-1465495910483-0d6745778738?auto=format&fit=crop&q=80&w=1920&quot;)
+                center/cover;
+            "
+          ></div>
+        </div>
+        <div class="overlay-content">
+          <p class="mb-0">The Wedding of</p>
+          <h1 class="mempelai-name">Joni & Verny</h1>
+          <p>Minggu, 19 April 2026</p>
+          <div id="countdown">
+            <div class="countdown-item">
+              <span id="days">00</span><br /><small>Hari</small>
+            </div>
+            <div class="countdown-item">
+              <span id="hours">00</span><br /><small>Jam</small>
+            </div>
+            <div class="countdown-item">
+              <span id="mins">00</span><br /><small>Menit</small>
+            </div>
+            <div class="countdown-item">
+              <span id="secs">00</span><br /><small>Detik</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Mempelai (Parallax Pink) -->
+    <section id="mempelai" class="parallax section-pink">
+      <div class="container text-center">
+        <h2 class="display-3 mb-5">Kedua Mempelai</h2>
+        <div class="row align-items-center">
+          <div class="col-md-5">
+            <h3 class="mempelai-name">Joni Hamarlambang</h3>
+            <p>Putra dari Bapak Fulan & Ibu Fulanah</p>
+          </div>
+          <div class="col-md-2">
+            <h2 class="display-4 text-white">&</h2>
+          </div>
+          <div class="col-md-5">
+            <h3 class="mempelai-name">Verny Jinianty</h3>
+            <p>Putri dari Bapak Fulan & Ibu Fulanah</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Acara (Parallax Blue) -->
+    <section id="acara" class="parallax section-blue">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 text-center bg-white p-5 rounded-4 shadow">
+            <h2 class="mb-4">Informasi Acara</h2>
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <i class="fas fa-ring fa-3x mb-3 text-primary"></i>
+                <h4>Akad Nikah</h4>
+                <p>09.00 - 10.30 WIB</p>
+              </div>
+              <div class="col-md-6 mb-4">
+                <i class="fas fa-glass-cheers fa-3x mb-3 text-danger"></i>
+                <h4>Resepsi</h4>
+                <p>11.00 - Selesai</p>
+              </div>
+            </div>
+            <hr />
+            <div
+              class="map-card p-3"
+              onclick="
+                window.open(
+                  'https://www.google.com/maps/search/?api=1&query=-7.2823682,112.6994013',
+                  '_blank',
+                )
+              "
+            >
+              <i class="fas fa-map-marker-alt text-danger mb-2"></i>
+              <h5>Lokasi Acara</h5>
+              <p>Jalan Maju Mundur 12, Surabaya</p>
+              <small class="text-muted">(Klik untuk Navigasi Map)</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Gift (Transfer) -->
+    <section id="galeri" class="py-5 bg-light">
+      <div class="container text-center py-5">
+        <h2 class="mb-5">Wedding Gift</h2>
+        <div class="row justify-content-center">
+          <div class="col-md-4">
+            <div class="card border-0 shadow-sm p-4">
+              <i class="fas fa-credit-card fa-2x mb-3 text-primary"></i>
+              <h5>BCA</h5>
+              <h4 id="accountNum">12374892</h4>
+              <p>a/n Joni Hamarlambang</p>
+              <span class="copy-btn" onclick="copyText('12374892')"
+                >Salin Nomor Rekening</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Ucapan (Live Chat Style) -->
+    <section id="ucapan" class="py-5 bg-white">
+      <div class="container py-5">
+        <h2 class="text-center mb-5">Kirim Ucapan & Doa</h2>
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <input
+                type="text"
+                id="guestName"
+                class="form-control"
+                placeholder="Nama Anda"
+              />
+            </div>
+            <div class="mb-3">
+              <textarea
+                id="guestMessage"
+                class="form-control"
+                rows="3"
+                placeholder="Tulis ucapan selamat..."
+              ></textarea>
+            </div>
+            <button id="sendBtn" class="btn btn-primary w-100 mb-4">
+              Kirim Ucapan
+            </button>
+
+            <div id="chat-box">
+              <!-- Dummy Messages -->
+              <div class="chat-bubble">
+                <strong>Budi:</strong><br />Selamat menempuh hidup baru Joni &
+                Verny!
+              </div>
+              <div class="chat-bubble">
+                <strong>Santi:</strong><br />Semoga menjadi keluarga sakinah
+                mawaddah warahmah.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal QR -->
+    <div class="modal fade" id="qrModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center p-4">
+          <h3>QR Code Check-In</h3>
+          <p>Tunjukkan QR ini kepada petugas penerima tamu</p>
+          <div class="py-4">
+            <img
+              src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=JoniVernyWedding_GuestID_12345"
+              alt="QR Code"
+            />
+          </div>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Tutup
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div
+        id="liveToast"
+        class="toast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header bg-primary text-white">
+          <strong class="me-auto">Notifikasi</strong>
+          <button
+            type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="toast"
+          ></button>
+        </div>
+        <div class="toast-body" id="toastMsg">Pesan terkirim!</div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/latest/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Countdown Logic
+      const targetDate = new Date("April 19, 2026 09:00:00").getTime();
+
+      setInterval(() => {
+        const now = new Date().getTime();
+        const diff = targetDate - now;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+        );
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+        $("#days").text(days < 10 ? "0" + days : days);
+        $("#hours").text(hours < 10 ? "0" + hours : hours);
+        $("#mins").text(mins < 10 ? "0" + mins : mins);
+        $("#secs").text(secs < 10 ? "0" + secs : secs);
+      }, 1000);
+
+      // Copy Text Logic
+      function copyText(text) {
+        const el = document.createElement("textarea");
+        el.value = text;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand("copy");
+        document.body.removeChild(el);
+
+        $("#toastMsg").text("Nomor rekening berhasil disalin!");
+        const toast = new bootstrap.Toast(document.getElementById("liveToast"));
+        toast.show();
+      }
+
+      // Chat Logic
+      $("#sendBtn").on("click", function () {
+        const name = $("#guestName").val();
+        const msg = $("#guestMessage").val();
+
+        if (name && msg) {
+          const bubble = `
+                    <div class="chat-bubble" style="background: var(--romantic-pink); align-self: flex-end; margin-left: auto;">
+                        <strong>${name}:</strong><br>${msg}
+                    </div>
+                `;
+          $("#chat-box").prepend(bubble);
+          $("#guestName").val("");
+          $("#guestMessage").val("");
+
+          $("#toastMsg").text("Terima kasih atas ucapannya!");
+          const toast = new bootstrap.Toast(
+            document.getElementById("liveToast"),
+          );
+          toast.show();
+        } else {
+          alert("Mohon isi nama dan ucapan Anda.");
+        }
+      });
+    </script>
+  </body>
+</html>
